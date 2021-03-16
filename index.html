@@ -5,35 +5,14 @@
 <div id="data_div"></div>
 
  <script>
-    function retrieveEmail() {
-    var email = $('#data_div').data("email");
-    // do something with the email variable as needed here
-    // here's an example of retrieving it to send it to the server
-    var paramStr = "email=" + email;
-
-    $.ajax ({
-        url: './textFile.txt',
-        dataType: 'json',
-        data: paramStr,
-        success: function(data) {
-           callBack(data);
-    });
-}
-
-function callBack(data) {
-    // do something with information passed back from the server after you sent the data to the server (you didn't say you needed to do this, but here's where it should be done)
-}
-
-function storeEmail() {
-    var email = $('#email').val();
-    $('#data_div').data("email", email);
-}
-
-$(document).ready( function() {
-    $('#emailButton').click( function() {
-        storeEmail();
-    });
-});
+   <?php
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = "John Doe\n";
+fwrite($myfile, $txt);
+$txt = "Jane Doe\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+?>
   </script>
   
 </html>
